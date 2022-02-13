@@ -33,7 +33,7 @@ client_id = f'python-mqtt-{random.randint(0, 100)}'
 
 
 # MQTT Log File ================================================================================================================
-FORMAT = '%(asctime)s - %(message)s'
+FORMAT = '%(asctime)s - %(user) - %(message)s'
 logging.basicConfig(filename='/home/pi/mqtt-rf/mqtt.log', level=logging.DEBUG, format=FORMAT)
 #^^^^^^^^^^^^^^^^^^^^^ log file that will contain all the same stuff as the print() commands with a time/date stamp, you will ahve to manually empty the file when too big
 
