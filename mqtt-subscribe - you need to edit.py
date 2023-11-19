@@ -20,7 +20,7 @@ from paho.mqtt import client as mqtt_client
 
 # MQTT Broker ==================================================================================================================
 broker = '##.##.##.##'   #<------------ IP Address of MQTT Server, in this case the Home Assistant Server
-port = 1883 #<------------------- port used on MQTT Server, default port was used
+port = 1883 #<------------------- port used on MQTT Server, default port was used. If you use TLS it is usually 8883
 username = 'username' #<--------------- username setup on the Home Assistant Server
 password = 'password' #<------------- password setup for the user on the Home Assistant Server
 
@@ -42,6 +42,9 @@ def connect_mqtt() -> mqtt_client:
 
     client = mqtt_client.Client(client_id)
     client.username_pw_set(username, password)
+    # Uncomment and edit this line if you are using TLS to connect
+    # To learn how to set up a MQTT with TLS follow instructions here: https://mosquitto.org/man/mosquitto-tls-7.html
+    # client.tls_set(ca_certs="/etc/ssl/certs/ca.crt", certfile="/etc/ssl/certs/cert.crt", keyfile="/etc/ssl/private/cert.key")
     client.on_connect = on_connect
 
     #client.connect(broker, port)
